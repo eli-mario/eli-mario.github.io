@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eli y Mario - Nos Casamos</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Dancing+Script:wght@400;500&family=Roboto:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Playfair Display', 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f3e8;
+            color: #333;
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.6) 0%, rgba(240, 230, 200, 1) 100%);
+            z-index: -1;
+        }
+
+        section, .section {
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            scroll-snap-align: start;
+            position: relative;
+        }
+
+        .header-image {
+            position: absolute;
+            top: 0;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 800px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        h1, h2, h3 {
+            color: #555;
+            font-family: 'Great Vibes', cursive;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin: 20px 0;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin: 10px 0;
+        }
+
+        p {
+            font-size: 1.5rem;
+            margin: 10px 0;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .disclaimer p {
+            font-size: 1rem;
+            font-family: 'Roboto', sans-serif;
+            text-align: left;
+        }
+
+        .photo-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .gallery {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 30px auto;
+            max-width: 1200px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .photo {
+            display: block;
+            height: 220px;
+            padding: 10px;
+            background: #fff;
+            border: 2px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            transform-origin: center;
+        }
+
+        .footer {
+            font-size: 1rem;
+            color: #777;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .arrow-bottom {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+        }
+
+        .disclaimer {
+            font-size: 1rem;
+            color: #555;
+            margin-top: 20px;
+            text-align: left;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-section {
+            font-family: 'Roboto', sans-serif;
+            text-align: center;
+            margin-top: 20px;
+            padding: 20px;
+        }
+
+        .cta-section a {
+            text-decoration: none;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .cta-section iframe {
+            margin-top: 20px;
+            border: none;
+        }
+
+        .cta-section p {
+            font-size: 1rem;
+            color: #555;
+            font-family: monospace;
+        }
+
+        .cta-section small {
+            font-size: 0.8rem;
+            color: #777;
+            font-family: monospace;
+        }
+
+        .cta-section h2 {
+            font-size: 1.5rem;
+            margin: 20px 0;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .video-container {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .video-post {
+            width: 90%;
+            max-width: 500px;
+            background: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .video-post .header {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .video-post .header img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .video-post .header .username {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .video-post video {
+            width: 100%;
+            display: block;
+        }
+
+        .video-post .actions {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+        }
+
+        .video-post .actions svg {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            margin-right: 1rem;
+        }
+
+        .video-post .description {
+            padding: 10px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <section class="section">
+        <img class="animate__animated animate__pulse animate__slower animate__infinite header-image" src="fondo.png" style="--animate-duration: 1.5s;">
+
+        <h2>¡Nos Casamos!</h2>
+        <h1 class="animate__animated animate__fadeInLeft animate__slower">Elizabeth</h1>
+        <h2 class="animate__animated animate__fadeIn animate__slower" style="margin: -1em;">──── & ────</h2>
+        <h1 class="animate__animated animate__fadeInRight animate__slower">Mario</h1>
+        <h2 class="animate__animated animate__heartBeat animate__infinite animate__slower arrow-bottom">↓</h2>
+    </section>
+
+    <div class="gallery">
+        <div data-aos="zoom-out-up" data-aos-duration="800"><img src="0.png" class="photo" style="transform: rotate(30deg);"></div>
+        <div data-aos="zoom-out-right" data-aos-duration="800"><img src="2.jpeg" class="photo" style="transform: rotate(-5deg);"></div>
+        <div data-aos="zoom-out-down" data-aos-duration="800"><img src="3.jpeg" class="photo" style="transform: rotate(15deg);"></div>
+        <div data-aos="zoom-out-right" data-aos-duration="800"><img src="4.jpeg" class="photo" style="transform: rotate(5deg);"></div>
+    </div>
+
+    <section class="section">
+        <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="500"><h2>La ceremonia será el</h2></div>
+        <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="500"><h2>Sábado 27 de diciembre</h2></div>
+        <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="500"><h2>2025</h2></div>
+        <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="800"><p>- La Caldera, Salta -</p></div>
+    </section>
+
+
+    <section class="section">
+        <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="500"><h1 id="invite" style="font-family: 'Dancing Script';"></h2></div>
+        <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="500"><h2 style="font-family: 'Dancing Script';">Queremos que nos acompañes</h2></div>
+    </section>
+
+
+    <section class="cta-section" data-aos="fade-up">
+        <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">
+            <h2>¡Confirma tu asistencia!</h2>
+            <a href="https://forms.gle/BeXB484vHv4MhNmP6" target="_blank">⇢ Confirma aquí ⇠</a>
+            <br>
+            <h2>Transferencia para regalo</h2>
+            <small>Para nuestro viaje en familia</small>
+            <br>
+            <p>CVU: 00000031000987654321</p>
+            <p>ALIAS: boda.eli.mario</p>
+
+            <br>
+            <h2>Dress Code</h2>
+            <p>“Libre , ven cómo te guste”</p>
+            <small> El color blanco <strong>no</strong> es disponible.</small>
+            <br>
+
+            <h2>Ubicación</h2>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4671.101899726118!2d-65.43770587492495!3d-24.725946983599103!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x941bcf5fa6bb8f3b%3A0x7e0b1c4c9ec5cf1!2sLa%20Caldera%2C%20Salta!5e0!3m2!1sen!2sar!4v1700000000000!5m2!1sen!2sar"
+                width="100%" height="300px" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <section class="video-container" data-aos="fade-up">
+        <div class="video-post">
+            <div class="header">
+                <img src="4.jpeg" alt="Usuario">
+                <div class="username">Casamiento_Eli_Mario <svg aria-label="Verified" class="x1lliihq x1n2onr6" fill="rgb(0, 149, 246)" height="12" role="img" viewBox="0 0 40 40" width="12"><title>Verified</title><path d="M19.998 3.094 14.638 0l-2.972 5.15H5.432v6.354L0 14.64 3.094 20 0 25.359l5.432 3.137v5.905h5.975L14.638 40l5.36-3.094L25.358 40l3.232-5.6h6.162v-6.01L40 25.359 36.905 20 40 14.641l-5.248-3.03v-6.46h-6.419L25.358 0l-5.36 3.094Zm7.415 11.225 2.254 2.287-11.43 11.5-6.835-6.93 2.244-2.258 4.587 4.581 9.18-9.18Z" fill-rule="evenodd"></path></svg></div>
+            </div>
+            <video autoplay loop muted playsinline>
+                <source src="1.mp4" type="video/mp4">
+                Tu navegador no soporta la reproducción de video.
+            </video>
+            <div class="actions">
+                <svg aria-label="Like" class="x1lliihq x1n2onr6 xyb1xck" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24"><title>Like</title><path d="M16.792 3.904A4.989 4.989 0 0 1 21.5 9.122c0 3.072-2.652 4.959-5.197 7.222-2.512 2.243-3.865 3.469-4.303 3.752-.477-.309-2.143-1.823-4.303-3.752C5.141 14.072 2.5 12.167 2.5 9.122a4.989 4.989 0 0 1 4.708-5.218 4.21 4.21 0 0 1 3.675 1.941c.84 1.175.98 1.763 1.12 1.763s.278-.588 1.11-1.766a4.17 4.17 0 0 1 3.679-1.938m0-2a6.04 6.04 0 0 0-4.797 2.127 6.052 6.052 0 0 0-4.787-2.127A6.985 6.985 0 0 0 .5 9.122c0 3.61 2.55 5.827 5.015 7.97.283.246.569.494.853.747l1.027.918a44.998 44.998 0 0 0 3.518 3.018 2 2 0 0 0 2.174 0 45.263 45.263 0 0 0 3.626-3.115l.922-.824c.293-.26.59-.519.885-.774 2.334-2.025 4.98-4.32 4.98-7.94a6.985 6.985 0 0 0-6.708-7.218Z"></path></svg>
+                <svg aria-label="Comment" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24"><title>Comment</title><path d="M20.656 17.008a9.993 9.993 0 1 0-3.59 3.615L22 22Z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path></svg>
+                <svg aria-label="Share" class="x1lliihq x1n2onr6 xyb1xck" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24"><title>Share</title><line fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2" x1="22" x2="9.218" y1="3" y2="10.083"></line><polygon fill="none" points="11.698 20.334 22 3.001 2 3.001 9.218 10.084 11.698 20.334" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></polygon></svg>
+            </div>
+            <div class="description" style="text-align: left;"><div class="username" style="display: inline;"><strong>Casamiento_Eli_Mario</strong> <svg aria-label="Verified" class="x1lliihq x1n2onr6" fill="rgb(0, 149, 246)" height="12" role="img" viewBox="0 0 40 40" width="12"><title>Verified</title><path d="M19.998 3.094 14.638 0l-2.972 5.15H5.432v6.354L0 14.64 3.094 20 0 25.359l5.432 3.137v5.905h5.975L14.638 40l5.36-3.094L25.358 40l3.232-5.6h6.162v-6.01L40 25.359 36.905 20 40 14.641l-5.248-3.03v-6.46h-6.419L25.358 0l-5.36 3.094Zm7.415 11.225 2.254 2.287-11.43 11.5-6.835-6.93 2.244-2.258 4.587 4.581 9.18-9.18Z" fill-rule="evenodd"></path></svg></div>Nos casamos! 🎉 y queremos celebrarlo con vos!</div>
+        </div>
+    </section>
+
+    <section class="footer" data-aos="fade-up">
+        <p>¡Te esperamos con mucha alegría!</p>
+        <h1 class="animate__animated animate__heartBeat animate__infinite">❤︎</h1>
+    </section>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+
+        // Refresh AOS after any dynamic changes
+        AOS.refresh();
+        // Get query parameter and update the invite text
+        const params = new URLSearchParams(window.location.search);
+        const inviteKey = params.get('o') || "";
+        const invites = {
+            "": "Vos y tu familia",
+            "S9bCj3eBktVk": "Claudia Francia",
+            "6wDzvGbQJRkC": "Maxi y Flor",
+            "AHw9L4HbkZ2Y": "Aldo Francia y Ana Tonello",
+            "3e8zaCSDYLha": "Diego, Nati y Denisse",
+            "ZwSHhLC9xRPL": "Marcelo y Rosalía",
+            "bXgE98Kj7d5K": "Nico y Sofi",
+            "df3X79PCJKMF": "Rodrigo Francia",
+            "GCnb5CUtkS63": "Susana Stampella y familia",
+            "766FFzkE95jT": "Ivana Palacios",
+            "7RfFsJfKXbr5": "Roxy y Marcos",
+            "w5yByLPq6qby": "",
+            "kJkRztaphdEX": "",
+            "KVs9K4Gxnkhb": "",
+            "GjzcpmeSQE9Y": "",
+            "NfzftszdALjU": "",
+            "zcRpUS9qz56L": "",
+            "CCfg6B9tHzMZ": "",
+            "N7xJ43n56mP5": "",
+        };
+        document.getElementById('invite').textContent = invites[inviteKey] || "Vos y tu familia";
+    </script>
+</body>
+</html>
