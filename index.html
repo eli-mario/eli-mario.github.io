@@ -266,8 +266,9 @@
 
 
     <section class="section">
+        <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="500"><h2 style="font-family: 'Dancing Script';">Esta es una invitación para:</h2></div>
         <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="500"><h1 id="invite" style="font-family: 'Dancing Script';"></h2></div>
-        <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="500"><h2 style="font-family: 'Dancing Script';">Queremos que nos acompañes</h2></div>
+        
     </section>
 
 
@@ -329,7 +330,7 @@
         const params = new URLSearchParams(window.location.search);
         const inviteKey = params.get('o') || "";
         const invites = {
-            "": "Vos y tu familia",
+            "": "Vos",
             "S9bCj3eBktVk": "Claudia Francia",
             "6wDzvGbQJRkC": "Maxi y Flor",
             "AHw9L4HbkZ2Y": "Aldo Francia y Ana Tonello",
@@ -349,7 +350,7 @@
             "CCfg6B9tHzMZ": "",
             "N7xJ43n56mP5": "",
         };
-        document.getElementById('invite').textContent = invites[inviteKey] || "Vos y tu familia";
+        document.getElementById('invite').textContent = invites[inviteKey] || "Vos";
     </script>
 </body>
 </html>
