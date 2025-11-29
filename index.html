@@ -159,6 +159,47 @@
             color: #333;
         }
 
+        .cta-button {
+            display: inline-block;
+            width: 100%;
+            max-width: 340px;
+            margin: 12px auto 0;
+            padding: 16px 18px;
+            background: linear-gradient(135deg, #f1ddba, #d9b47a);
+            color: #3a2a12;
+            border: 1px solid #bf9a5f;
+            border-radius: 999px;
+            box-shadow: 0 10px 26px rgba(180, 137, 72, 0.18);
+            letter-spacing: 0.02em;
+            font-size: 1.05rem;
+            line-height: 1.2;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(180, 137, 72, 0.28);
+            filter: brightness(1.02);
+        }
+
+        .cta-button.primary {
+            background: radial-gradient(circle at 20% 20%, #f6e7c8, #d4ad6b 60%);
+        }
+
+        .cta-button .cta-note {
+            display: block;
+            font-size: 0.8rem;
+            color: #5a4327;
+            opacity: 0.9;
+            margin-top: 4px;
+        }
+
+        .cta-button.secondary {
+            background: #f4e8d4;
+            border-color: #d3b27f;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+
         .cta-section iframe {
             margin-top: 20px;
             border: none;
@@ -168,6 +209,64 @@
             font-size: 1rem;
             color: #555;
             font-family: monospace;
+        }
+
+        .bank-info {
+            width: 100%;
+            max-width: 520px;
+            margin: 10px auto 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .copy-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 12px 14px;
+            background: #fff9f0;
+            border: 1px solid #e5cfaa;
+            border-radius: 14px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+        }
+
+        .copy-label {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1rem;
+            color: #3f2c14;
+            text-align: left;
+        }
+
+        .copy-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 12px;
+            background: #d9b47a;
+            color: #2f2414;
+            border: 1px solid #c2995a;
+            border-radius: 999px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+        }
+
+        .copy-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .copy-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+            background: #e2c187;
+        }
+
+        .copy-btn.copied {
+            background: #cda464;
+            color: #1f160b;
         }
 
         .cta-section small {
@@ -273,6 +372,8 @@
         <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="500"><h2>Sábado 27 de diciembre</h2></div>
         <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="500"><h2>2025</h2></div>
         <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="800"><p>- La Caldera, Salta -</p></div>
+        <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="900"><p>17:00 hs · Parroquia Nuestra Señora del Rosario</p></div>
+        <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="1000"><p>18:00 hs · Civil y fiesta · Hostería La Caldera</p></div>
     </section>
 
 
@@ -286,13 +387,35 @@
     <section class="cta-section" data-aos="fade-up">
         <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">
             <h2>¡Confirma tu asistencia!</h2>
-            <a href="https://forms.gle/BeXB484vHv4MhNmP6" target="_blank">⇢ Confirma aquí ⇠</a>
-            <br>
+            <a class="cta-button primary" href="https://forms.gle/BeXB484vHv4MhNmP6" target="_blank" rel="noreferrer">
+                ⇢ Confirmá asistencia
+                <span class="cta-note">Incluye opción vegetariana/vegana</span>
+            </a>
+            
             <h2>Transferencia para regalo</h2>
             <small>Para nuestro viaje en familia</small>
-            <br>
-            <p>CVU: 00000031000987654321</p>
-            <p>ALIAS: boda.eli.mario</p>
+            <div class="bank-info">
+                <div class="copy-row">
+                    <span class="copy-label">CVU: <strong>0000168300000002451882</strong></span>
+                    <button class="copy-btn" type="button" data-copy="0000168300000002451882">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        <span class="copy-text">Copiar</span>
+                    </button>
+                </div>
+                <div class="copy-row">
+                    <span class="copy-label">ALIAS: <strong>eliymario.boda</strong></span>
+                    <button class="copy-btn" type="button" data-copy="eliymario.boda">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        <span class="copy-text">Copiar</span>
+                    </button>
+                </div>
+            </div>
 
             <br>
             <h2>Dress Code</h2>
@@ -362,6 +485,31 @@
             "N7xJ43n56mP5": "",
         };
         document.getElementById('invite').textContent = invites[inviteKey] || "Vos";
+
+        // Copiar CVU / ALIAS
+        const copyButtons = document.querySelectorAll('.copy-btn');
+        copyButtons.forEach((btn) => {
+            const textNode = btn.querySelector('.copy-text');
+            const original = textNode ? textNode.textContent : 'Copiar';
+            btn.addEventListener('click', async () => {
+                const value = btn.getAttribute('data-copy') || '';
+                try {
+                    await navigator.clipboard.writeText(value);
+                    btn.classList.add('copied');
+                    if (textNode) {
+                        textNode.textContent = 'Copiado';
+                    }
+                    setTimeout(() => {
+                        btn.classList.remove('copied');
+                        if (textNode) {
+                            textNode.textContent = original;
+                        }
+                    }, 1500);
+                } catch (e) {
+                    alert('No pudimos copiar. Por favor copiá manualmente.');
+                }
+            });
+        });
     </script>
 </body>
 </html>
