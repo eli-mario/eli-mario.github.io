@@ -484,6 +484,9 @@
             "CCfg6B9tHzMZ": "Roberto Gauna",
             "N7xJ43n56mP5": "Nicolas Salem"
         }
+        const inviteName = invites[inviteKey] || "Vos";
+        document.getElementById('invite').textContent = inviteName;
+        
         const copyButtons = document.querySelectorAll('.copy-btn');
         copyButtons.forEach((btn) => {
             const textNode = btn.querySelector('.copy-text');
